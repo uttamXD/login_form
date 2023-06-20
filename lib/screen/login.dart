@@ -33,7 +33,7 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-    final myLoginButon() = Material(
+    final myLoginButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
       color: Colors.blue,
@@ -41,6 +41,13 @@ class _LoginState extends State<Login> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.all(20),
         onPressed: () => print('Login buton is pressed'),
+        child: Text(
+          'Login',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
       ),
     );
     return Scaffold(
@@ -51,20 +58,24 @@ class _LoginState extends State<Login> {
             padding: EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 100,
-                ),
                 Icon(
                   Icons.supervised_user_circle,
-                  size: 120,
+                  size: 150,
+                ),
+                SizedBox(
+                  height: 150,
                 ),
                 usernameField,
                 SizedBox(
                   height: 10,
                 ),
                 passwordField,
+                SizedBox(
+                  height: 10,
+                ),
+                myLoginButon,
               ],
             ),
           ),
