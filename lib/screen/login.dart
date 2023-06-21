@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_form/screen/homepage.dart';
 
 TextStyle myStyle = TextStyle(fontSize: 25);
 
@@ -10,9 +11,16 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String? username;
+  String? password;
   @override
   Widget build(BuildContext context) {
     final usernameField = TextField(
+      onChanged: (val) {
+        setState(() {
+          username = val;
+        });
+      },
       style: myStyle,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.all(10),
@@ -23,6 +31,11 @@ class _LoginState extends State<Login> {
       ),
     );
     final passwordField = TextField(
+      onChanged: (val) {
+        setState(() {
+          password = val;
+        });
+      },
       obscureText: true,
       style: myStyle,
       decoration: InputDecoration(
@@ -40,7 +53,14 @@ class _LoginState extends State<Login> {
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.all(20),
-        onPressed: () => print('Login buton is pressed'),
+        onPressed: () {
+          if (username == "ucr" && password == "porkmomo") {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => HomePage(username!)));
+          } else {
+            print("login failed");
+          }
+        },
         child: Text(
           'Login',
           style: TextStyle(
